@@ -2,15 +2,13 @@
 from grab.spider import Spider, Task
 import logging
 import sys
+from utils.FilterUrl import FilterUrl
 
 class Walker(Spider):
     base_url = 'http://alternativ.com.ua/'
     initial_urls = [base_url]
     links  = [base_url]
     TempLevel = []
-
-
-
 
     Globalid  = 0
     TempIterapor = 0
@@ -21,10 +19,10 @@ class Walker(Spider):
         self.TempIterapor += 1
         self.Globalid = self.TempIterapor
 
-
     def task_initial(self, grab, task):
         if grab.response.code == 200:
             return self.find_links(grab)
+
     def find_links(self, grab):
         links = grab.doc.select('//a')
         host = self.initial_urls[0]
@@ -39,7 +37,7 @@ class Walker(Spider):
                 if not myurl.find(self.base_url) == -1:
                     if not myurl in self.links:
                         self.links.append(myurl)
-                        self.add_task(Task('trip', url=myurl, priority=len(self.links),numurl  = self.GetId(), caontLinks=len(links) ))
+                        self.add_task(Task('trip', url=FilterUrl(myurl), priority=len(self.links),numurl  = self.GetId(), caontLinks=len(links) ))
             except:
                 pass
 
