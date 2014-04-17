@@ -8,7 +8,7 @@ class Walker(Spider):
     base_url = 'http://alternativ.com.ua/'
     initial_urls = [base_url]
     links  = [base_url]
-    TempLevel = []
+    TempLevel = {}
 
     Globalid  = 0
     TempIterapor = 0
@@ -27,6 +27,7 @@ class Walker(Spider):
         links = grab.doc.select('//a')
         host = self.initial_urls[0]
         self.GenId()
+
         for iterLink,link in enumerate(links):
             try:
                 myurl = link.attr('href')
@@ -46,7 +47,7 @@ class Walker(Spider):
     def task_trip(self, grab, task):
 
         print 'Nomer Partii: ' + str(task.numurl), 'Url: ' +  str(task.url), str(task.priority) + ' Kolichesvo linkov: ' + str(task.caontLinks)
-        self.TempLevel.append({task.url:task.numurl})
+        self.TempLevel[task.url] = task.numurl
         self.find_links(grab)
 
     def shutdown(self):
