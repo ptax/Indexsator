@@ -47,7 +47,7 @@ class Walker(Spider):
     def task_trip(self, grab, task):
 
         print 'Nomer Partii: ' + str(task.numurl), 'Url: ' +  str(task.url), str(task.priority) + ' Kolichesvo linkov: ' + str(task.caontLinks)
-        self.TempLevel[task.url] = task.numurl
+        self.TempLevel[task.url] = [task.numurl,task.url]
         self.find_links(grab)
 
     def shutdown(self):
