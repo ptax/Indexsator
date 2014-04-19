@@ -3,23 +3,17 @@ t = {'http://alternativ.com.ua/lechenie-alkogolizma/lecheniya-zhenskogo-alkogoli
 t = sorted(t.items(), key=lambda x: x[1])
 print t
 def IterPageCout(Num):
-
-    if Num == 1:
-        return 1
-    elif Num == 2:
-        return 2
-    elif Num == 3:
-        return 3
-    elif Num == 4:
+    LevelPage = [1,2,3,4]
+    try:
+        if Num == LevelPage[Num-1]:
+            return LevelPage[Num-1]
+        elif Num == 1:
+            return 1
+    except:
         return 4
-    elif Num > 2:
-        ListLevelePage = []
-        for minus in xrange(Num):
-            ListLevelePage.append(minus)
-        #NextLevel =  Num - minus + 1
-        return ListLevelePage[-3]
 
-print IterPageCout(5)
+
+print IterPageCout(4)
 '''
 
 for key in t:
@@ -28,3 +22,6 @@ for key in t:
     elif key[1] > 1:
         print '222'
 '''
+"""
+List cout must next level
+"""
