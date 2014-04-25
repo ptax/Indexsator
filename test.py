@@ -22,7 +22,7 @@ class Crawler:
                 page = urllib2.urlopen(url)
  
                 # Discard non html files
-                page_info = <span class="skimlinks-unlinked">page.info</span>()['content-type']
+                page_info = '<span class="skimlinks-unlinked">page.info</span>'(A)['content-type']
                 if not(re.search('text\/html', page_info)):
                     if self._debug: print 'Found a non-html file ', url, ' :', <span class="skimlinks-unlinked">page.info</span>()['content-type']
  

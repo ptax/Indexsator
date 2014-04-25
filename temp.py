@@ -29,8 +29,12 @@ List cout must next level
 d = {'url1':1,'url2':1,'url3':3}
 
 d1 = {}
+L = []
 for k, v in d.iteritems():
+
     if v == v:
-        d1 = {v:k}
+        l = L.append(v)
+    d1[k] = l
 
 print d1
+print L
